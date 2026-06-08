@@ -58,6 +58,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ========== SERVIR ARCHIVOS ESTÁTICOS ==========
+assets_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+if os.path.exists(assets_path):
+    app.mount("/assets", StaticFiles(directory=assets_path), name="assets")
+    logger.info(f"✅ Carpeta assets montada: {assets_path}")
+else:
+    logger.warning(f"⚠️ Carpeta assets no encontrada: {assets_path}")
+
 # ========== CARGAR BASE DE DATOS DE PACIENTES ==========
 # Intentar múltiples rutas para mayor robustez
 POSSIBLE_PATHS = [
