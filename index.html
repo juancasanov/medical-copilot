@@ -460,7 +460,7 @@
     <header class="header">
       <div class="brand">
         <div class="logo-slot">
-          <img src="/assets/logo.png" alt="Logo Coomeva" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
+<img src="assets/logo.png" alt="Logo Coomeva" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
         </div>
         <div class="brand-meta">
           <span class="org">Centro de Admisiones</span>
@@ -1060,12 +1060,14 @@ ws = new WebSocket(`${protocol}//${window.location.host}/ws/audio-stream`);
         $("patientName").textContent = nombreDetectado ? nombreDetectado.toUpperCase() : "Esperando datos del paciente...";
         $("patientId").textContent = paciente.edad ? `C.C. — · ${paciente.edad} años` : "C.C. — · — años";
 
-        // Si la IA detectó nombre, buscar en la BD
-        if (nombreDetectado && !nombreBuscado) {
-          nombreBuscado = nombreDetectado;
-          console.log(`🔍 Nombre detectado por IA: ${nombreDetectado}`);
-          // buscarPorNombre(nombreDetectado);  // DESACTIVADO
-        }
+// DESHABILITADO: No buscar por nombre detectado en transcripción
+        // Razón: Los nombres detectados de la transcripción suelen tener errores y no coinciden exactamente con BD
+        // La búsqueda por cédula es suficiente y más confiable
+        // if (nombreDetectado && !nombreBuscado) {
+        //   nombreBuscado = nombreDetectado;
+        //   console.log(`🔍 Nombre detectado por IA: ${nombreDetectado}`);
+        //   buscarPorNombre(nombreDetectado);
+        // }
       }
 
       // Update risk level

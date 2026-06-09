@@ -59,6 +59,7 @@ app.add_middleware(
 )
 
 # ========== SERVIR ARCHIVOS ESTÁTICOS ==========
+# Montar carpeta assets para servir imágenes, CSS, etc.
 assets_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
 if os.path.exists(assets_path):
     app.mount("/assets", StaticFiles(directory=assets_path), name="assets")
